@@ -1,75 +1,75 @@
-# Subir Archivos a GitHub con PyGithub
+# Upload Files to GitHub with PyGithub
 
-Este script automatiza el proceso de subir archivos y carpetas a un repositorio de GitHub utilizando la librería `PyGithub`. Permite crear repositorios, comprobar si existen y subir múltiples archivos de manera sencilla, manteniendo la estructura de carpetas si es necesario.
+This script automates the process of uploading files and folders to a GitHub repository using the `PyGithub` library. It allows you to create repositories, check if they exist, and upload multiple files easily, maintaining folder structure if needed.
 
-## Índice
+## Table of Contents
 
-1. [Características](#características)
-2. [Requisitos](#requisitos)
-3. [Instalación](#instalación)
-4. [Configuración](#configuración)
-   - [Cómo crear un Token de GitHub](#cómo-crear-un-token-de-github)
-5. [Uso](#uso)
-6. [Futuras integraciones](#futuras-integraciones)
-## Características
+1. [Features](#features)
+2. [Requirements](#requirements)
+3. [Installation](#installation)
+4. [Configuration](#configuration)
+   - [How to create a GitHub Token](#how-to-create-a-github-token)
+5. [Usage](#usage)
+6. [Future Integrations](#future-integrations)
 
-- **Automatización**: Crea repositorios en GitHub automáticamente si no existen.
-- **Subida de Archivos**: Sube archivos individuales o directorios completos, preservando la estructura de carpetas.
-- **Soporte de Repositorios Privados**: Permite crear repositorios privados si es necesario.
-- **Fácil de usar**: Configuración sencilla con un archivo de token de GitHub o usando variables de entorno.
-- **Compatible con múltiples archivos y carpetas**: Puedes subir tanto archivos individuales como carpetas completas con una sola ejecución.
+## Features
 
-## Requisitos
+- **Automation**: Automatically creates GitHub repositories if they do not exist.
+- **File Upload**: Uploads individual files or entire directories, preserving folder structure.
+- **Support for Private Repositories**: Allows creating private repositories if needed.
+- **Easy to Use**: Simple setup with a GitHub token file or using environment variables.
+- **Supports Multiple Files and Folders**: You can upload both individual files and entire folders with a single execution.
+
+## Requirements
 
 - Python 3.x
-- [PyGithub](https://pypi.org/project/PyGithub/) - Para interactuar con la API de GitHub.
+- [PyGithub](https://pypi.org/project/PyGithub/) - For interacting with the GitHub API.
+
+  To install `PyGithub`, run:
+
   ```bash
-   pip3 install PyGithub
+  pip3 install PyGithub
 
-## Instalación
+## Installation
 
-1. Clona el repositorio o descarga los archivos a tu máquina local.
+1. Clone the repository or download the files to your local machine.
 
    ```bash
-   git clone https://github.com/tuusuario/nombre-del-repositorio.git
-   cd nombre-del-repositorio
-## Configuración
+   git clone https://github.com/yourusername/repository-name.git
+   cd repository-name
+   
+## Configuration
 
-Para que el script funcione correctamente, necesitarás un **token de acceso personal de GitHub**. Este token se utilizará para autenticar las peticiones hacia la API de GitHub.
+For the script to work correctly, you will need a **GitHub personal access token**. This token will be used to authenticate requests to the GitHub API.
 
-### Cómo crear un Token de GitHub
+### How to Create a GitHub Token
 
-1. **Iniciar sesión en GitHub**: Dirígete a [GitHub](https://github.com) y accede a tu cuenta.
-2. **Acceder a la configuración**: Haz clic en tu foto de perfil en la esquina superior derecha y selecciona **"Settings"** (Configuración).
-3. **Generar un token**:
-   - En el menú lateral izquierdo, selecciona **"Developer settings"**.
-   - Luego selecciona **"Personal access tokens"**.
-   - Haz clic en **"Generate new token"**.
-4. **Configurar permisos del token**:
-   - Asigna un nombre al token (por ejemplo, `subida-archivos-script`).
-   - Selecciona los permisos necesarios. Para este script, asegúrate de marcar al menos los siguientes permisos:
-     - **repo**: acceso completo a repositorios privados y públicos.
-     - **workflow**: si planeas interactuar con GitHub Actions.
-   - Haz clic en **Generate token**.
-5. **Guardar el token**: Copia el token generado y guárdalo en un lugar seguro. **No lo compartas con nadie**.
+1. **Log in to GitHub**: Go to [GitHub](https://github.com) and log into your account.
+2. **Access Settings**: Click on your profile picture in the top right corner and select **"Settings"**.
+3. **Generate a Token**:
+   - In the left sidebar, select **"Developer settings"**.
+   - Then select **"Personal access tokens"**.
+   - Click on **"Generate new token"**.
+4. **Configure token permissions**:
+   - Give your token a name (e.g., `file-upload-script`).
+   - Select the necessary permissions. For this script, make sure to check at least the following:
+     - **repo**: full access to both private and public repositories.
+     - **workflow**: if you plan to interact with GitHub Actions.
+   - Click **Generate token**.
+5. **Save the token**: Copy the generated token and store it in a safe place. **Do not share it with anyone**.
+### Token Configuration
 
-### Configuración del Token
+Once you have the token, you can configure it in two ways:
 
-Una vez que tengas el token, puedes configurarlo de dos maneras:
+#### Option 1: Use an Environment Variable
 
-#### Opción 1: Usar la variable de entorno
-
-Puedes configurar la variable de entorno `GITHUB_TOKEN` en tu sistema de la siguiente manera:
+You can set the `GITHUB_TOKEN` environment variable on your system like this:
 
 ```bash
-export GITHUB_TOKEN="tu-token-de-github"
+export GITHUB_TOKEN="your-github-token"
+
 ```
-#### Opción 2: Usar un archivo de token
-
-Coloca el token en un archivo llamado .github_token en tu directorio home (~). Si el archivo no existe, el script te pedirá que lo ingreses manualmente.
-
-## Uso
-
+## Usage
 ```
 usage: script.py [-h] [--repositorio REPOSITORIO] [--descripcion DESCRIPCION] [--private] archivo_o_carpeta [archivo_o_carpeta ...]
   
