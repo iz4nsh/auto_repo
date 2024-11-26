@@ -35,7 +35,7 @@ This script automates the process of uploading files and folders to a GitHub rep
 1. Clone the repository or download the files to your local machine.
 
    ```bash
-   git clone https://github.com/yourusername/auto_repo
+   git clone https://github.com/iz4nsh/auto_repo
    cd auto_repo
    chmod +x install_repo.sh
    sudo ./install_repo.sh
