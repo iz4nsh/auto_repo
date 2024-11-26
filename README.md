@@ -48,6 +48,7 @@ For the script to work correctly, you will need a **GitHub personal access token
    - Select the necessary permissions. For this script, make sure to check at least the following:
      - **repo**: full access to both private and public repositories.
      - **workflow**: if you plan to interact with GitHub Actions.
+     - **delete_repositorires** : if you will use -e.
    - Click **Generate token**.
 5. **Save the token**: Copy the generated token and store it in a safe place. **Do not share it with anyone**.
 ### Token Configuration
@@ -86,20 +87,20 @@ export GITHUB_TOKEN="your-github-token"
 
 ## Usage
 ```
-usage: script.py [-h] [--repositorio REPOSITORIO] [--descripcion DESCRIPCION] [--private] archivo_o_carpeta [archivo_o_carpeta ...]
-  
+usage: repo [-h] [-r REPOSITORIO] [-e REPOSITORIO] [-d DESCRIPCION] [--private] [archivo_o_carpeta ...]
+
 Sube archivos o carpetas a un repositorio en GitHub.
 
 positional arguments:
   archivo_o_carpeta     Ruta de uno o más archivos o carpetas.
 
-optional arguments:
-  -h, --help            Show this help message and exit.
-  --repositorio REPOSITORIO
-                        Nombre del repositorio (si no se proporciona, se crea uno nuevo con el nombre del archivo o carpeta).
-  --descripcion DESCRIPCION
+options:
+  -h, --help            show this help message and exit
+  -r REPOSITORIO, --repositorio REPOSITORIO
+                        Nombre del repositorio existente al cual añadir los archivos.
+  -e REPOSITORIO, --eliminar REPOSITORIO
+                        Eliminar el repositorio especificado.
+  -d DESCRIPCION, --descripcion DESCRIPCION
                         Descripción del repositorio (opcional).
   --private             Crea el repositorio como privado.
-```
-## Future Integrations
-I plan to introduce a feature to implement AI in the program. With it, a description and a Readme.md can be generated automatically. It will work for small repositories but will be a great help in documenting the code you upload automatically. I'm already working on it
+already working on it
