@@ -24,3 +24,22 @@ Este script automatiza el proceso de subir archivos y carpetas a un repositorio 
    ```bash
    git clone https://github.com/tuusuario/nombre-del-repositorio.git
    cd nombre-del-repositorio
+
+## Uso
+
+```
+usage: script.py [-h] [--repositorio REPOSITORIO] [--descripcion DESCRIPCION] [--private] archivo_o_carpeta [archivo_o_carpeta ...]
+  
+Sube archivos o carpetas a un repositorio en GitHub.
+
+positional arguments:
+  archivo_o_carpeta     Ruta de uno o más archivos o carpetas.
+
+optional arguments:
+  -h, --help            Show this help message and exit.
+  --repositorio REPOSITORIO
+                        Nombre del repositorio (si no se proporciona, se crea uno nuevo con el nombre del archivo o carpeta).
+  --descripcion DESCRIPCION
+                        Descripción del repositorio (opcional).
+  --private             Crea el repositorio como privado.
+
