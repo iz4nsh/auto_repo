@@ -53,9 +53,21 @@ def crear_repositorio(g, nombre_repo, descripcion, privado=False):
     )
     print(f"Repositorio '{nombre_repo}' creado correctamente.")
 
+# Función para eliminar un repositorio de GitHub usando PyGithub
+def eliminar_repositorio(g, nombre_repo):
+    user = g.get_user()
+    try:
+        repo = user.get_repo(nombre_repo)
+        repo.delete()  # Eliminar el repositorio
+        print(f"Repositorio '{nombre_repo}' eliminado correctamente.")
+    except github.GithubException as e:
+        if e.status == 404:
+            print(f"El repositorio '{nombre_repo}' no existe.")
+        else:
+            print(f"Error al intentar eliminar el repositorio: {e}")
+
 # Función para subir un archivo específico a un repositorio
 def subir_archivo_a_github(g, nombre_repo, archivo_path, ruta_repo, commit_message="Subiendo archivo"):
-    # Relativa la ruta dentro del repositorio
     archivo_relativo = os.path.join(ruta_repo, os.path.basename(archivo_path))
     
     with open(archivo_path, "rb") as f:
@@ -86,12 +98,22 @@ def obtener_archivos_de_carpeta(carpeta):
 def main():
     parser = argparse.ArgumentParser(description="Sube archivos o carpetas a un repositorio en GitHub.")
     
-    parser.add_argument("archivo_o_carpeta", nargs='+', help="Ruta de uno o más archivos o carpetas.")  # Ahora acepta varios archivos o carpetas
+    parser.add_argument("archivo_o_carpeta", nargs='*', help="Ruta de uno o más archivos o carpetas.")  # Ahora acepta varios archivos o carpetas
     parser.add_argument("-r", "--repositorio", help="Nombre del repositorio existente al cual añadir los archivos.")
+    parser.add_argument("-e", "--eliminar", help="Eliminar el repositorio especificado.", metavar="REPOSITORIO")
     parser.add_argument("-d", "--descripcion", default="Repositorio creado automáticamente.", help="Descripción del repositorio (opcional).")
     parser.add_argument("--private", action="store_true", help="Crea el repositorio como privado.")
 
     args = parser.parse_args()
+
+    # Si se pasa el argumento -e, solo se puede poner el nombre del repositorio y no otros archivos o carpetas
+    if args.eliminar:
+        repositorio = args.eliminar
+        # Obtener el token y autenticar
+        token_github = obtener_token()
+        g = github.Github(token_github)
+        eliminar_repositorio(g, repositorio)
+        return
 
     repositorio = args.repositorio
     descripcion = args.descripcion
