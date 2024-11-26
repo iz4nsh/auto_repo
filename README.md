@@ -86,5 +86,5 @@ optional arguments:
                         Descripción del repositorio (opcional).
   --private             Crea el repositorio como privado.
 ```
-## Futuras integraciones
-En un futuro implementare una función para generar archivos readme.md de forma automatizada, asi como una descripción. Estoy ya trabajando en ello.
+## Future Integrations
+This translation should provide the same functionality and details as the original version but in English. You can copy and paste this into a Markdown file (`.md`) for use.
