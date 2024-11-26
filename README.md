@@ -2,6 +2,15 @@
 
 Este script automatiza el proceso de subir archivos y carpetas a un repositorio de GitHub utilizando la librería `PyGithub`. Permite crear repositorios, comprobar si existen y subir múltiples archivos de manera sencilla, manteniendo la estructura de carpetas si es necesario.
 
+## Índice
+
+1. [Características](#características)
+2. [Requisitos](#requisitos)
+3. [Instalación](#instalación)
+4. [Configuración](#configuración)
+   - [Cómo crear un Token de GitHub](#cómo-crear-un-token-de-github)
+5. [Uso](#uso)
+   
 ## Características
 
 - **Automatización**: Crea repositorios en GitHub automáticamente si no existen.
@@ -24,6 +33,40 @@ Este script automatiza el proceso de subir archivos y carpetas a un repositorio 
    ```bash
    git clone https://github.com/tuusuario/nombre-del-repositorio.git
    cd nombre-del-repositorio
+## Configuración
+
+Para que el script funcione correctamente, necesitarás un **token de acceso personal de GitHub**. Este token se utilizará para autenticar las peticiones hacia la API de GitHub.
+
+### Cómo crear un Token de GitHub
+
+1. **Iniciar sesión en GitHub**: Dirígete a [GitHub](https://github.com) y accede a tu cuenta.
+2. **Acceder a la configuración**: Haz clic en tu foto de perfil en la esquina superior derecha y selecciona **"Settings"** (Configuración).
+3. **Generar un token**:
+   - En el menú lateral izquierdo, selecciona **"Developer settings"**.
+   - Luego selecciona **"Personal access tokens"**.
+   - Haz clic en **"Generate new token"**.
+4. **Configurar permisos del token**:
+   - Asigna un nombre al token (por ejemplo, `subida-archivos-script`).
+   - Selecciona los permisos necesarios. Para este script, asegúrate de marcar al menos los siguientes permisos:
+     - **repo**: acceso completo a repositorios privados y públicos.
+     - **workflow**: si planeas interactuar con GitHub Actions.
+   - Haz clic en **Generate token**.
+5. **Guardar el token**: Copia el token generado y guárdalo en un lugar seguro. **No lo compartas con nadie**.
+
+### Configuración del Token
+
+Una vez que tengas el token, puedes configurarlo de dos maneras:
+
+#### Opción 1: Usar la variable de entorno
+
+Puedes configurar la variable de entorno `GITHUB_TOKEN` en tu sistema de la siguiente manera:
+
+```bash
+export GITHUB_TOKEN="tu-token-de-github"
+```
+#### Opción 2: Usar un archivo de token
+
+Coloca el token en un archivo llamado .github_token en tu directorio home (~). Si el archivo no existe, el script te pedirá que lo ingreses manualmente.
 
 ## Uso
 
@@ -42,4 +85,4 @@ optional arguments:
   --descripcion DESCRIPCION
                         Descripción del repositorio (opcional).
   --private             Crea el repositorio como privado.
-
+```
