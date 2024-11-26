@@ -10,7 +10,7 @@ Este script automatiza el proceso de subir archivos y carpetas a un repositorio 
 4. [Configuración](#configuración)
    - [Cómo crear un Token de GitHub](#cómo-crear-un-token-de-github)
 5. [Uso](#uso)
-   
+6. [Futuras integraciones](#futuras-integraciones)
 ## Características
 
 - **Automatización**: Crea repositorios en GitHub automáticamente si no existen.
@@ -86,3 +86,5 @@ optional arguments:
                         Descripción del repositorio (opcional).
   --private             Crea el repositorio como privado.
 ```
+## Futuras integraciones
+En un futuro implementare una funcion para generar archivos readme.md de forma automatizada, asi como una descripción. Estoy ya trabajando en ello.
