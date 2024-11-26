@@ -6,11 +6,12 @@ This script automates the process of uploading files and folders to a GitHub rep
 
 1. [Features](#features)
 2. [Requirements](#requirements)
-3. [Installation](#installation)
-4. [Configuration](#configuration)
+3. [Configuration](#configuration)
    - [How to create a GitHub Token](#how-to-create-a-github-token)
-5. [Usage](#usage)
-6. [Future Integrations](#future-integrations)
+4. [Installation](#installation)
+5. [Uninstall](#uninstall)
+6. [Usage](#usage)
+7. [Future Integrations](#future-integrations)
 
 ## Features
 
@@ -29,17 +30,7 @@ This script automates the process of uploading files and folders to a GitHub rep
 
   ```bash
   pip3 install PyGithub
-
-## Installation
-
-1. Clone the repository or download the files to your local machine.
-
-   ```bash
-   git clone https://github.com/iz4nsh/auto_repo
-   cd auto_repo
-   chmod +x install_repo.sh
-   sudo ./install_repo.sh
-   
+  
 ## Configuration
 
 For the script to work correctly, you will need a **GitHub personal access token**. This token will be used to authenticate requests to the GitHub API.
@@ -71,6 +62,28 @@ You can set the `GITHUB_TOKEN` environment variable on your system like this:
 export GITHUB_TOKEN="your-github-token"
 
 ```
+
+## Installation
+
+1. Clone the repository or download the files to your local machine.
+
+   ```bash
+   git clone https://github.com/iz4nsh/auto_repo
+   cd auto_repo
+   chmod +x install_repo.sh
+   sudo ./install_repo.sh
+   ```
+
+## Uninstall
+1. Go to the directory and:
+   
+   ```bash
+   chmod +x uninstall_repo.sh
+   sudo ./uninstall_repo.sh
+   ```
+
+   
+
 ## Usage
 ```
 usage: script.py [-h] [--repositorio REPOSITORIO] [--descripcion DESCRIPCION] [--private] archivo_o_carpeta [archivo_o_carpeta ...]
