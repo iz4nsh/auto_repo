@@ -87,4 +87,4 @@ optional arguments:
   --private             Crea el repositorio como privado.
 ```
 ## Future Integrations
-This translation should provide the same functionality and details as the original version but in English. You can copy and paste this into a Markdown file (`.md`) for use.
+I plan to introduce a feature to implement AI in the program. With it, a description and a Readme.md can be generated automatically. It will work for small repositories but will be a great help in documenting the code you upload automatically. I'm already working on it
